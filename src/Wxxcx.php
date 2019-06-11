@@ -1,5 +1,5 @@
 <?php
-namespace Iwanli\Wxxcx;
+namespace Urumuqi\Wxxcx;
 
 
 use Ixudra\Curl\Facades\Curl;
