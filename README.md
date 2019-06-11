@@ -1,3 +1,5 @@
+# 感谢 🙏iwanli
+
 # Laravel 5 微信小程序扩展
 
 > 小程序官方的加解密 SDK 已经非常清楚了，只不过改成 Laravel 风格而已，仅仅相当于搬砖工。至于重复造轮子，我发现其他人的扩展解密用户信息的时候代码出错了，并且需要安装一个 Laravel 的 Curl 扩展也没说。只好自己去根据他们的源码自己写一个0.0 ，不依赖其他扩展，直接安装使用即可。
@@ -43,7 +45,7 @@ composer require iwanli/wxxcx=2.*
 ```php
 Iwanli\Wxxcx\WxxcxServiceProvider::class,
 ```
-发布配置文件: 
+发布配置文件:
 
 ```bash
 php artisan vendor:publish --tag=wxxcx
@@ -85,8 +87,8 @@ class WxxcxController extends Controller
         //根据 code 获取用户 session_key 等信息, 返回用户openid 和 session_key
         $userInfo = $this->wxxcx->getLoginInfo($code);
 
-        //获取解密后的用户信息
-        return $this->wxxcx->getUserInfo($encryptedData, $iv);
+        // 增加session_key 参数
+        return $this->wxxcx->getUserInfo($encryptedData, $iv, $userInfo['session_key']);
     }
 }
 ```
@@ -138,5 +140,3 @@ wx.login({
     }
 })
 ```
-
-> 如有bug，请在 [Issues](https://github.com/lanceWan/wxxcx/issues) 中反馈，非常感谢！

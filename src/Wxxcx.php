@@ -37,6 +37,7 @@ class Wxxcx
      * Created by vicleos
      * @param $encryptedData
      * @param $iv
+     * @param $sessionKey
      * @return string
      * @throws \Exception
      */
