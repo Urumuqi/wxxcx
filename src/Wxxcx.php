@@ -1,9 +1,11 @@
 <?php
 namespace Urumuqi\Wxxcx;
 
-
 use Ixudra\Curl\Facades\Curl;
 
+/**
+ * Class Wxxcx.
+ */
 class Wxxcx
 {
     /**
@@ -15,8 +17,7 @@ class Wxxcx
     private $sessionKey;
 
     /**
-     * Wxxcx constructor.
-     * @param $code 登录凭证（code）
+     * constructor.
      */
     function __construct()
     {
@@ -27,6 +28,7 @@ class Wxxcx
 
     /**
      * Created by vicleos
+     *
      * @return mixed
      */
     public function getLoginInfo($code){
@@ -35,10 +37,13 @@ class Wxxcx
 
     /**
      * Created by vicleos
+     *
      * @param $encryptedData
      * @param $iv
      * @param $sessionKey
+     *
      * @return string
+     *
      * @throws \Exception
      */
     public function getUserInfo($encryptedData, $iv, $sessionKey = null){
@@ -60,6 +65,7 @@ class Wxxcx
     /**
      * Created by vicleos
      * 根据 code 获取 session_key 等相关信息
+     *
      * @throws \Exception
      */
     private function authCodeAndCode2session($code){
@@ -78,10 +84,10 @@ class Wxxcx
 
     /**
      * 请求小程序api
-     * @author 晚黎
-     * @date   2017-05-27T11:51:10+0800
+     *
      * @param  [type]                   $url  [description]
      * @param  [type]                   $data [description]
+     *
      * @return [type]                         [description]
      */
     private function httpRequest($url, $data = null)
@@ -102,5 +108,4 @@ class Wxxcx
         curl_close($curl);
         return json_decode($output,JSON_UNESCAPED_UNICODE);
     }
-
 }

@@ -1,11 +1,14 @@
 <?php
+/**
+ * 微信加密数据解密.
+ *
+ * @author wuqi <wuqi226@gmail.com>
+ */
+
 namespace Urumuqi\Wxxcx;
 
-
 /**
- * Prpcrypt class
- *
- *
+ * Class Prpcypt.
  */
 class Prpcrypt
 {
@@ -18,20 +21,21 @@ class Prpcrypt
 
     /**
      * 对密文进行解密
+     *
      * @param string $aesCipher 需要解密的密文
      * @param string $aesIV 解密的初始向量
+     *
      * @return string 解密得到的明文
      */
     public function decrypt( $aesCipher, $aesIV )
     {
 
         try {
-        //解密
-        $decrypted = openssl_decrypt($aesCipher, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA, $aesIV);
+            //解密
+            $decrypted = openssl_decrypt($aesCipher, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA, $aesIV);
         } catch (Exception $e) {
             return array(ErrorCode::$IllegalBuffer, null);
         }
-
 
         try {
             //去除补位字符

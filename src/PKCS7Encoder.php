@@ -1,9 +1,20 @@
 <?php
+/**
+ * PKCS7Encoder.
+ */
+
 namespace Urumuqi\Wxxcx;
 
-
+/**
+ * Class PKCS7Encoder.
+ */
 class PKCS7Encoder
 {
+    /**
+     * block size.
+     *
+     * @var integer
+     */
     public static $block_size = 16;
 
     /**
@@ -36,12 +47,10 @@ class PKCS7Encoder
      */
     function decode($text)
     {
-
         $pad = ord(substr($text, -1));
         if ($pad < 1 || $pad > 32) {
             $pad = 0;
         }
         return substr($text, 0, (strlen($text) - $pad));
     }
-
 }

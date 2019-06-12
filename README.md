@@ -56,24 +56,17 @@ class WxxcxController extends Controller
     }
 
     /**
-     * 小程序登录获取用户信息
-     * @author 晚黎
-     * @date   2017-05-27T14:37:08+0800
-     * @return [type]                   [description]
+     * wx.getUserInfo 解析加密数据.
      */
     public function getWxUserInfo()
     {
-        //code 在小程序端使用 wx.login 获取
-        $code = request('code', '');
+        // 微信登陆，获取到的session_key
+        $sessionKey = request('session_key', '');
         //encryptedData 和 iv 在小程序端使用 wx.getUserInfo 获取
-        $encryptedData = request('encryptedData', '');
+        $encryptedData = request('encrypted_data', '');
         $iv = request('iv', '');
 
-        //根据 code 获取用户 session_key 等信息, 返回用户openid 和 session_key
-        $userInfo = $this->wxxcx->getLoginInfo($code);
-
-        // 增加session_key 参数
-        return $this->wxxcx->getUserInfo($encryptedData, $iv, $userInfo['session_key']);
+        return $this->wxxcx->getUserInfo($encryptedData, $iv, $sessionKey);
     }
 }
 ```
@@ -83,7 +76,7 @@ class WxxcxController extends Controller
 ```
 {
     "openId": "xxxx",
-    "nickName": "晚黎",
+    "nickName": "nickname",
     "gender": 1,
     "language": "zh_CN",
     "city": "",
@@ -111,7 +104,7 @@ wx.login({
                     data: {
                         code: code,
                         iv: resp.iv,
-                        encryptedData: resp.encryptedData
+                        encrypted_data: resp.encryptedData
                     },
                     success: function (res) {
                         console.log(res.data)

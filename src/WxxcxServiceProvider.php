@@ -3,6 +3,9 @@ namespace Urumuqi\Wxxcx;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class WxxcxServiceProvider.
+ */
 class WxxcxServiceProvider extends ServiceProvider
 {
     /**

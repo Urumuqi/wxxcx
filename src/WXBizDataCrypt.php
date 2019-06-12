@@ -1,7 +1,9 @@
 <?php
 namespace Urumuqi\Wxxcx;
 
-
+/**
+ * Class WXBizDataCrypt.
+ */
 class WXBizDataCrypt
 {
     private $appid;
@@ -20,6 +22,7 @@ class WXBizDataCrypt
 
     /**
      * 检验数据的真实性，并且获取解密后的明文.
+     *
      * @param $encryptedData string 加密的用户数据
      * @param $iv string 与用户数据一同返回的初始向量
      * @param $data string 解密后的原文
