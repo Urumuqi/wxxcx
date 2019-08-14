@@ -59,7 +59,7 @@ class Wxxcx
                 'message' => 'encryptedData 解密失败'
             ];
         }
-        return $decodeData;
+        return json_decode($decodeData, true);
     }
 
     /**
