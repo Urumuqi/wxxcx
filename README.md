@@ -14,7 +14,7 @@
 **PHP > 7.1**
 
 ```bash
-composer require urumuqi/wxxcx=2.1
+composer require urumuqi/wxxcx=1.1
 ```
 
 或者添加如下信息到你的 `composer.json` 文件中 :
@@ -22,7 +22,7 @@ composer require urumuqi/wxxcx=2.1
 **PHP > 7.1**
 
 ```bash
-"urumuqi/wxxcx": "^2.0"
+"urumuqi/wxxcx": "^1.0"
 ```
 
 然后注册服务提供者到 Laravel中 具体位置：`/config/app.php` 中的 `providers` 数组:
